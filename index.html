@@ -65,8 +65,13 @@
 
             <h2 class="sr-only">Transações</h2>
 
-            <a href="#" class="buttom new">+ Nova Transação</a>  <!--Indo a um fragento na mesma página-->
+            <a href="#" 
+            
+            onclick="Modal.open()"
 
+            class="buttom new"
+            >+ Nova Transação</a>  <!--Indo a um fragento na mesma página-->
+                                   <!--Realizando uma ação com onclick (evento)-->
             <table id="data-table">
                 <thead>
                     <tr>
@@ -114,7 +119,8 @@
     
     </main>
 
-    <div class="modal-overlay active">
+    <!-- Retirando active para ser adicionado pelo JavaScript  / Antes:modal-overlay active-->
+    <div class="modal-overlay">
         <div class="modal">
             <div class="modal-content">
                 <div id="form">
@@ -172,7 +178,10 @@
                         </div>
 
                         <div class="input-group actions">
-                            <a href="#" class="button cancel">Cancelar</a>
+                            <a
+                            onclick="Modal.close()"
+                            href="#" 
+                            class="button cancel">Cancelar</a>
                             <button type="submit">Salvar</button>
                         </div>
 
@@ -181,6 +190,30 @@
             </div>
         </div>
     </div>
+
+    <!-- Adicionando JavaScript : Torna nosso html/css inteligente-->
+    <script>
+
+        //Const quando sabemos que após a criação a aplicação não será mais mudada
+        //let quando haverá mudança
+
+        const Modal = {
+            open(){
+                //Abrir Modal (Qunaod cliacar na aplicação)
+                //Adicionar a classe active ao modal
+                //alert('Abri o Modal') Resposta dada no browser ao executar a ação
+
+                document.querySelector('.modal-overlay').classList.add('active')
+            },
+            close(){
+                //Fechar o Modal
+                //Remover classe active modal
+
+                document.querySelector('.modal-overlay').classList.remove('active')
+            }
+        }
+
+    </script>
 
     <footer>dev.finance$</footer>
 
